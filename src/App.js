@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import { Routes, Route } from 'react-router-dom'
+import Technology from './Technology'
+import About from './About';
+import Careers from './Carress'
+import Home from './Home'
+import Footer from './Footer';
+import Subscribe from './Subscribe';
+import useScrollWithOffset from './useScroll';
 
-function App() {
+
+
+const App = () => {
+  useScrollWithOffset(60);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Routes>
+        <Route path='*' element={<Home />} />
+        <Route path='/' element={<Home />} />
+        <Route path='/Technology' element={<Technology />} />
+        <Route exact path='/About' element={<About />} />
+        <Route path='/Careers' element={<Careers />} />
+      </Routes>
+      <Footer />
+      <Subscribe />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
